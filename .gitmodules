@@ -1,0 +1,6 @@
+[submodule "partis"]
+	path = partis
+	url = https://github.com/psathyrella/partis.git
+[submodule "sumrep"]
+	path = sumrep
+	url = https://github.com/matsengrp/sumrep.git
