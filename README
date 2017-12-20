@@ -1,3 +1,5 @@
+Pull this GitHub repo recursively to get the necessary submodules:
+git pull --recurse-submodules https://github.com/krdav/AMP.git
 
 Use the INSTALL executable to install the required python environment and partis.
 
