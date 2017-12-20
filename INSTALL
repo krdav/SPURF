@@ -4,7 +4,7 @@
 
 
 
-
+# Install conda environment:
 conda create -y -n AMP
 source activate AMP  # do this _every_ time you start a new terminal
 conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
@@ -12,18 +12,14 @@ conda install -y -c biocore mafft
 pip install colored-traceback dendropy==3.12.3
 
 
-
-# Install conda environment:
-echo 'allow_softlinks: False' > ~/.condarc
-conda env create -f partis_env.yml
-source activate partis
-#R CMD BATCH modules2install.R
+# R module to install:
+R CMD BATCH modules2install.R
 
 
 # Install ANARCI for making AHo annotations:
-#cd ANARCI_KD_copy
-#python setup.py install --user
-#cd ..
+cd ANARCI_KD_copy
+python setup.py install --user
+cd ..
 
 
 # Install partis for inferring VDJ annotation and naive sequence:
