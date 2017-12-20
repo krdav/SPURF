@@ -1,9 +1,6 @@
 [submodule "partis"]
 	path = partis
 	url = https://github.com/psathyrella/partis.git
-[submodule "sumrep"]
-	path = sumrep
-	url = https://github.com/matsengrp/sumrep.git
 [submodule "ANARCI_KD_copy"]
 	path = ANARCI_KD_copy
 	url = https://github.com/krdav/ANARCI_KD_copy.git

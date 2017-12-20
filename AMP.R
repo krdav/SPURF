@@ -25,7 +25,7 @@ input_seq <- df[1, 5:ncol(df)]
 naiveAA <- df[2, 5:ncol(df)]
 neutral_subs <- df[3, 5:ncol(df)]/df$Nseqs[3]
 one_entry <- list('v_gene'=as.character(df$v_gene[1]), 'd_gene'=as.character(df$d_gene[1]), 'j_gene'=as.character(df$j_gene[1]), 'input_seq'=input_seq, 'naiveAA'=naiveAA, 'neutral_subs'=neutral_subs)
-#print(one_entry)
+print(one_entry)
 
 unlink(output_path)
 
