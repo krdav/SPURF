@@ -4,16 +4,16 @@
 
 
 # Install conda environment:
-echo 'allow_softlinks: False' > ~/.condarc
-conda env create -f partis_env.yml
+#echo 'allow_softlinks: False' > ~/.condarc
+#conda env create -f partis_env.yml
 source activate partis
-R CMD BATCH modules2install.R
+#R CMD BATCH modules2install.R
 
 
 # Install ANARCI for making AHo annotations:
-cd ANARCI_KD_copy
-python setup.py install --user
-cd ..
+#cd ANARCI_KD_copy
+#python setup.py install --user
+#cd ..
 
 
 # Install partis for inferring VDJ annotation and naive sequence:
@@ -22,6 +22,10 @@ cd partis
 cd ..
 export PARTIS_PATH=`pwd`'/partis/bin/partis'
 
+
+
+# Set the script.dir in AMP.R
+echo 'Please set the script.dir in AMP.R'
 
 
 
