@@ -7,8 +7,10 @@
 # Install conda environment:
 conda create -y -n AMP
 source activate AMP  # do this _every_ time you start a new terminal
+conda install -c anaconda gxx_linux-64
 conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
 conda install -y -c biocore mafft
+conda install -y -c r r-rcpparmadillo
 pip install colored-traceback dendropy==3.12.3
 
 source activate AMP
@@ -33,11 +35,4 @@ cd partis
 ./bin/build.sh
 cd ..
 #export PARTIS_PATH=`pwd`'/partis/bin/partis'
-
-
-
-# Set the script.dir in AMP.R
-echo 'Please set the script.dir in AMP.R'
-
-
 
