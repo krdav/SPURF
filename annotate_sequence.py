@@ -270,7 +270,6 @@ def main():
 
     # AHo annotate on the naive amino acid sequence:
     AHo_naive, numb_profile = AHo_annotate_naive(naiveAA)
-    print(numb_profile)
 
     # Use the AHo annotation to make a profile over the input sequence:
     AHo_input = AHo_annotate_input(fixed_input_seqAA, numb_profile)
@@ -278,7 +277,6 @@ def main():
     # Simulate a profile under a neutral substitution process:
     Nmuts = hamming_dist(naive, fixed_input_seq)
     sim_profile = simulate_profile([Nmuts], naive, numb_profile, mutability, substitution)
-    print(sim_profile)
 
     df = make_dataframe(AHo_input, AHo_naive, sim_profile, VDJ)
     write_dataframe(df, args.outfile)    
