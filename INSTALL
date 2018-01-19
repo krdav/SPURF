@@ -11,12 +11,18 @@ conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials s
 conda install -y -c biocore mafft
 pip install colored-traceback dendropy==3.12.3
 
+source activate AMP
+conda config --add channels r
+conda config --add channels bioconda
+conda update pysam
+conda install pyyaml
 
 # R module to install:
-R CMD BATCH modules2install.R
+# R CMD BATCH modules2install.R
 
 
 # Install ANARCI for making AHo annotations:
+# export PATH="/home/matsengrp/local/bin:$PATH"  # hmmscan binaries (and other stuff)
 cd ANARCI_KD_copy
 python setup.py install --user
 cd ..
@@ -26,7 +32,7 @@ cd ..
 cd partis
 ./bin/build.sh
 cd ..
-export PARTIS_PATH=`pwd`'/partis/bin/partis'
+#export PARTIS_PATH=`pwd`'/partis/bin/partis'
 
 
 
