@@ -1,15 +1,15 @@
 Pull this GitHub repo recursively to get the necessary submodules:
 ```shell
-git clone --recursive https://github.com/krdav/AMP.git
-git pull --recurse-submodules https://github.com/krdav/AMP.git
+git clone --recursive https://github.com/krdav/SPURF.git
+git pull --recurse-submodules https://github.com/krdav/SPURF.git
 ```
 
 Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`).
 
 After installation, the conda environment needs to be loaded every time before use, like this:
 ```shell
-cd AMP
-source activate AMP
+cd SPURFT
+source activate SPURF
 ```
 
 Then, enter into an interactive R session and input your test sequence:
@@ -20,7 +20,7 @@ input_seq = "CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGT
 
 Predict the clonal family substitution profile corresponding to the above input sequence as follows:
 ```R
-source("AMP.R")
+source("SPURF.R")
 pred.prof = predict.prof(input_seq)
 ```
 The output is a single row matrix consisting of the predicted amino acid frequnencies at each AHo position.

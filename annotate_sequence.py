@@ -248,7 +248,7 @@ def write_dataframe(df, outfile):
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description='Annotate BCR sequence for AMP.',
+    parser = argparse.ArgumentParser(description='Annotate BCR sequence for SPURF.',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--sequence', type=str, required=True, help='Sequence for annotation.')
     parser.add_argument('--outfile', type=str, default='out.csv', help='Output csv filename.')
