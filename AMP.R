@@ -48,7 +48,11 @@ predict.prof = function(input_seq) {
     }
   }
   
-  return(predict_nogap_profs(alpha, rep(1:149, each=21), input.prof,
-                             list(naiveAA.prof, vgene.prof, neut.prof, vsubgrp.prof),
-                             nogap.prof, 149))
+  # predict the substitution profile
+  pred.prof = predict_nogap_profs(alpha, rep(1:149, each=21), input.prof,
+                                  list(naiveAA.prof, vgene.prof, neut.prof, vsubgrp.prof),
+                                  nogap.prof, 149)
+  colnames(pred.prof) = colnames(input_prof)
+  
+  return(pred.prof)
 }

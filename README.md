@@ -22,3 +22,7 @@ Predict the clonal family substitution profile corresponding to the above input 
 source("AMP.R")
 pred.prof = predict.prof(input_seq)
 ```
+The output is a single row matrix consisting of the predicted amino acid frequnencies at each AHo position.
+Each entry in the matrix is named using the `p_X_a_Y` format, where `X` refers to the AHo position and `Y` represents the amino acid index at that position.
+The amino acid ordering used here is `('A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', '-')`, where `'-'` indicates a gap character.
+
