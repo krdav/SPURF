@@ -20,10 +20,11 @@ conda update pysam
 conda install pyyaml
 
 # R module to install:
-# R CMD BATCH modules2install.R
+R CMD BATCH modules2install.R
 
 
 # Install ANARCI for making AHo annotations:
+echo 'Instaling ANARCI. Important: HMMER3 is required!!!'
 # export PATH="/home/matsengrp/local/bin:$PATH"  # hmmscan binaries (and other stuff)
 cd ANARCI_KD_copy
 python setup.py install --user

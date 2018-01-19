@@ -1,9 +1,7 @@
-# These modules are necessary for sumrep.
+# Install R modules not already part of conda R essentials.
 
-print('Installing modules for sumrep')
+print('Installing modules')
 
-install.packages(c("alakazam", "ape", "data.table", "dplyr", "HDMD", "jsonlite", "magrittr", "pegas", "Peptides", "RecordLinkage", "shazam", "seqinr", "stringdist", "textmineR", "yaml"))
+install.packages(c("ggseqlogo"))
 
-source("https://bioconductor.org/biocLite.R")
-biocLite("Biostrings")
 
