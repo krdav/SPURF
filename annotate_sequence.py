@@ -139,6 +139,8 @@ def simulate_profile(muts, naiveDNA, numb_profile, mutability, substitution):
     mutation_model = MutationModel(naiveDNA, mutability, substitution)
     muts_iter = cycle(muts)  # Cycle through the list of mutations in the input
     profile = mutation_model.simulate_AAprofile(naiveDNA, numb_profile, muts_iter, N=args.SIM_SIZE, S=None, verbose=True)
+    gap = [0]*20 + [args.SIM_SIZE]
+    profile = [pos if sum(pos) > 0 else gap for pos in profile]
     return profile
 
 
@@ -228,8 +230,9 @@ def AHo_annotate_input(inputAA, numb_profile):
     aa_list = list(inputAA)
     for j, obs in enumerate(numb_profile):
         if obs == 0:
-            continue
-        aa = aa_list.pop(0)
+            aa = '-'
+        else:
+            aa = aa_list.pop(0)
         aa_idx = AA_INDEX[aa]
         AHo_input[j][aa_idx] = 1
     return(AHo_input)
@@ -267,6 +270,7 @@ def main():
 
     # AHo annotate on the naive amino acid sequence:
     AHo_naive, numb_profile = AHo_annotate_naive(naiveAA)
+    print(numb_profile)
 
     # Use the AHo annotation to make a profile over the input sequence:
     AHo_input = AHo_annotate_input(fixed_input_seqAA, numb_profile)
@@ -274,6 +278,7 @@ def main():
     # Simulate a profile under a neutral substitution process:
     Nmuts = hamming_dist(naive, fixed_input_seq)
     sim_profile = simulate_profile([Nmuts], naive, numb_profile, mutability, substitution)
+    print(sim_profile)
 
     df = make_dataframe(AHo_input, AHo_naive, sim_profile, VDJ)
     write_dataframe(df, args.outfile)    
