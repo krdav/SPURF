@@ -12,18 +12,13 @@ cd SPURFT
 source activate SPURF
 ```
 
-Then, enter into an interactive R session and input your test sequence:
-```R
-# This is the input sequence.
-input_seq = "CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGTGATTACTACTGGAGCTGGATCCATCAGCCCCCAGGGAAGGGGCTGGAGTGGATTGGGGAAATCAATCATAGTGGGAGCACCAACTACAACCCGTCCCTCGAAAGTCGAGCCACCATATCAGTAGACACGTCCCAGAACAACCTCTCCCTGAAGCTGAGCTCTGTGACCGCCGCGGACTCGGCTGTGTATTACTGTGCGAGAGGCCCGACTACAATGGCTCACGACTTTGACTACTGGGGCCAGGGAACCCTGGTCACC"
+Then, use the Rscript to infer a substitution profile for your input sequence:
+```
+Rscript --vanilla run_SPURF.R <input_sequence> <output_base>
+E.g.:
+Rscript --vanilla run_SPURF.R CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGTGATTACTACTGGAGCTGGATCCATCAGCCCCCAGGGAAGGGGCTGGAGTGGATTGGGGAAATCAATCATAGTGGGAGCACCAACTACAACCCGTCCCTCGAAAGTCGAGCCACCATATCAGTAGACACGTCCCAGAACAACCTCTCCCTGAAGCTGAGCTCTGTGACCGCCGCGGACTCGGCTGTGTATTACTGTGCGAGAGGCCCGACTACAATGGCTCACGACTTTGACTACTGGGGCCAGGGAACCCTGGTCACC seqXYZ_SPURF_output
 ```
 
-Predict the clonal family substitution profile corresponding to the above input sequence as follows:
-```R
-source("SPURF.R")
-pred.prof = predict.prof(input_seq)
-```
-The output is a single row matrix consisting of the predicted amino acid frequnencies at each AHo position.
-Each entry in the matrix is named using the `p_X_a_Y` format, where `X` refers to the AHo position and `Y` represents the amino acid index at that position.
-The amino acid ordering used here is `('A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', '-')`, where `'-'` indicates a gap character.
+The output is a PSSM and a logo plot of this PSSM.
+
 
