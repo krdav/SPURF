@@ -2,8 +2,6 @@
 # This can be used as an executable to install all dependencies:
 # ./INSTALL
 
-
-
 # Install conda environment:
 conda create -y -n SPURF
 source activate SPURF  # do this _every_ time you start a new terminal
@@ -19,21 +17,17 @@ conda config --add channels bioconda
 conda update pysam
 conda install pyyaml
 
-# R module to install:
+# R modules to install:
 R CMD BATCH modules2install.R
-
 
 # Install ANARCI for making AHo annotations:
 echo 'Instaling ANARCI. Important: HMMER3 is required!!!'
-# export PATH="/home/matsengrp/local/bin:$PATH"  # hmmscan binaries (and other stuff)
 cd ANARCI_KD_copy
 python setup.py install --user
 cd ..
-
 
 # Install partis for inferring VDJ annotation and naive sequence:
 cd partis
 ./bin/build.sh
 cd ..
-#export PARTIS_PATH=`pwd`'/partis/bin/partis'
 

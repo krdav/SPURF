@@ -4,7 +4,7 @@ git clone --recursive https://github.com/krdav/SPURF.git
 git pull --recurse-submodules https://github.com/krdav/SPURF.git
 ```
 
-Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`).
+Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`). Notice that HMMER3 is required in the PATH since this is a dependency of ANARCI (for AHo annotation).
 
 After installation, the conda environment needs to be loaded every time before use, like this:
 ```shell
