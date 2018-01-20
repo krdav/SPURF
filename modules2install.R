@@ -2,6 +2,6 @@
 
 print('Installing modules')
 
-install.packages(c("ggseqlogo"))
+install.packages(c("ggseqlogo"), repos='http://cran.us.r-project.org')
 
 
