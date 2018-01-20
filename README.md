@@ -8,7 +8,7 @@ Use the INSTALL executable to install the required python environment and partis
 
 After installation, the conda environment needs to be loaded every time before use, like this:
 ```shell
-cd SPURFT
+cd SPURF
 source activate SPURF
 ```
 
