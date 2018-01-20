@@ -4,6 +4,10 @@ git clone --recursive https://github.com/krdav/SPURF.git
 git pull --recurse-submodules https://github.com/krdav/SPURF.git
 ```
 
+Dependencies:
+conda (installation guide here: https://conda.io/docs/user-guide/install/linux.html)
+HMMER (installation guide here: http://hmmer.org/)
+
 Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`). Notice that HMMER3 is required in the PATH since this is a dependency of ANARCI (for AHo annotation). Installing partis may require extra attention. We have tested the installation on a fresh Ubuntu installation and running the following will satisfy the extra partis requirements:
 ```
 sudo apt-get install libz-dev cmake scons libgsl0-dev libncurses5-dev libxml2-dev libxslt1-dev mafft
