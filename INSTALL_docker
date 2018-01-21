@@ -2,6 +2,7 @@
 # This can be used as an executable to install all dependencies:
 # ./INSTALL
 
+
 # Install conda environment:
 conda install -c anaconda gxx_linux-64
 conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
@@ -18,10 +19,10 @@ conda install -y pyyaml
 R CMD BATCH modules2install.R
 
 # Install ANARCI for making AHo annotations:
-echo 'Instaling ANARCI. Important: HMMER3 is required!!!'
 cd ANARCI_KD_copy
 python setup.py install --user
 cd ..
+
 
 # Install partis for inferring VDJ annotation and naive sequence:
 cd partis

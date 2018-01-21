@@ -1,8 +1,30 @@
-Pull this GitHub repo recursively to get the necessary submodules:
+### Substitution Profiles Using Related Families (SPURF)
+
+This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred Position-Specific Scoring Matrix (PSSM) and a logo plot of this PSSM.
+SPURF uses cached data from a large-scale Rep-Seq dataset as input to a statistical model made to determine a detailed clonal family specific substitution profile for a single input sequence.
+Source code to fit the SPURF model from scratch using another dataset is also provided.
+
+
+### Cloning this repo
+
+Clone this GitHub repo recursively to get the necessary submodules:
 ```shell
 git clone --recursive https://github.com/krdav/SPURF.git
+cd SPURF
 git pull --recurse-submodules https://github.com/krdav/SPURF.git
 ```
+
+### Installation
+
+There are two supported ways of installing the command line implementation of SPURF 1) using conda on Linux and 2) using Docker and the provided Dockerfile.
+The conda installation has been tested on our own servers and a fresh Ubuntu installation on a VirtualBox.
+Using VirtualBox SPURF can be installed on both MAC and Windows.
+Alternatively, Docker can also be used on multiple platforms.
+
+
+#### Using conda
+
+
 
 Dependencies:
 conda (installation guide here: https://conda.io/docs/user-guide/install/linux.html)
