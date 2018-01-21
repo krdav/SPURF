@@ -26,7 +26,7 @@ Alternatively, Docker can also be used on multiple platforms.
 
 Install conda for Python2 using the guide here: https://conda.io/docs/user-guide/install/linux.html
 Miniconda is sufficient and much faster at installing.
-Remember to `source ~/.bashrc` if continueing installing in the same terminal window.
+Remember to `source ~/.bashrc` if continuing installing in the same terminal window.
 
 
 Install dependencies with `apt-get`:
