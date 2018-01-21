@@ -24,22 +24,23 @@ Alternatively, Docker can also be used on multiple platforms.
 
 #### Using conda
 
-
-
-Dependencies:
-conda (installation guide here: https://conda.io/docs/user-guide/install/linux.html)
-HMMER (installation guide here: http://hmmer.org/ or use apt-get: sudo apt-get install hmmer)
+Installation conda using the guide here: https://conda.io/docs/user-guide/install/linux.html
 
 Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`). Notice that HMMER3 is required in the PATH since this is a dependency of ANARCI (for AHo annotation). Installing partis may require extra attention. We have tested the installation on a fresh Ubuntu installation and running the following will satisfy the extra partis requirements:
 ```
-sudo apt-get install libz-dev cmake scons libgsl0-dev libncurses5-dev libxml2-dev libxslt1-dev mafft
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y libz-dev cmake scons libgsl0-dev libncurses5-dev libxml2-dev libxslt1-dev mafft hmmer
 ```
 
 With Docker:
+```
 cd SPURF
 docker build -t spurf .
-sudo docker run -it -v /:/host spurf /bin/bash
+sudo docker run -it spurf bash
+```
 
+Detach using `ctrl-p ctrl-q`
 
 
 After installation, the conda environment needs to be loaded every time before use, like this:
