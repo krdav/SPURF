@@ -14,7 +14,7 @@ pip install colored-traceback dendropy==3.12.3
 source activate SPURF
 conda config --add channels r
 conda config --add channels bioconda
-conda update pysam
+conda update -y pysam
 conda install -y pyyaml
 
 # R modules to install:
