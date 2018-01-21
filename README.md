@@ -8,7 +8,7 @@ Source code to fit the SPURF model from scratch using another dataset is also pr
 ### Cloning this repo
 
 Clone this GitHub repo recursively to get the necessary submodules:
-```shell
+```
 git clone --recursive https://github.com/krdav/SPURF.git
 cd SPURF
 git pull --recurse-submodules https://github.com/krdav/SPURF.git
@@ -24,37 +24,46 @@ Alternatively, Docker can also be used on multiple platforms.
 
 #### Using conda
 
-Installation conda using the guide here: https://conda.io/docs/user-guide/install/linux.html
+Install conda for Python2 using the guide here: https://conda.io/docs/user-guide/install/linux.html
+Miniconda is sufficient and much faster at installing.
+Remember to `source ~/.bashrc` if continueing installing in the same terminal window.
 
-Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`). Notice that HMMER3 is required in the PATH since this is a dependency of ANARCI (for AHo annotation). Installing partis may require extra attention. We have tested the installation on a fresh Ubuntu installation and running the following will satisfy the extra partis requirements:
+
+Install dependencies with `apt-get`:
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y libz-dev cmake scons libgsl0-dev libncurses5-dev libxml2-dev libxslt1-dev mafft hmmer
 ```
 
-With Docker:
-```
-cd SPURF
-docker build -t spurf .
-sudo docker run -it spurf bash
-```
-
-Detach using `ctrl-p ctrl-q`
-
-
+Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`).
 After installation, the conda environment needs to be loaded every time before use, like this:
-```shell
+```
 source activate SPURF
 ```
 
-Then, use the Rscript to infer a substitution profile for your input sequence:
+
+#### Using Docker
+
+Install Docker following the guide here: https://docs.docker.com/engine/installation/
+
+Inside the repository folder build the container and run it:
+```
+sudo docker build -t spurf .
+sudo docker run -it spurf bash
+```
+
+Detach using `ctrl-p ctrl-q`.
+
+
+### Running SPURF
+
+SPURF is wrapped into an Rscript name `run_SPURF.R` that takes two inputs 1) an antibody heavy chain DNA sequence, and optionally, 2) the basename for the two output files which are a PSSM and a logo plot.
+Example of a run:
 ```
 Rscript --vanilla run_SPURF.R <input_sequence> <output_base>
 E.g.:
 Rscript --vanilla run_SPURF.R CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGTGATTACTACTGGAGCTGGATCCATCAGCCCCCAGGGAAGGGGCTGGAGTGGATTGGGGAAATCAATCATAGTGGGAGCACCAACTACAACCCGTCCCTCGAAAGTCGAGCCACCATATCAGTAGACACGTCCCAGAACAACCTCTCCCTGAAGCTGAGCTCTGTGACCGCCGCGGACTCGGCTGTGTATTACTGTGCGAGAGGCCCGACTACAATGGCTCACGACTTTGACTACTGGGGCCAGGGAACCCTGGTCACC seqXYZ_SPURF_output
 ```
-
-The output is a PSSM and a logo plot of this PSSM.
 
 
