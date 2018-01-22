@@ -29,7 +29,7 @@ R CMD BATCH modules2install.R
 # Install ANARCI for making AHo annotations:
 echo 'Installing ANARCI. Important: HMMER3 is required!!!'
 cd ANARCI_KD_copy
-python setup.py install --user
+python setup.py install
 cd ..
 
 # Install partis for inferring VDJ annotation and naive sequence:
