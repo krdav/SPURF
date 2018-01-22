@@ -5,7 +5,13 @@
 # Install conda environment:
 conda create -y -n SPURF
 source activate SPURF  # do this _every_ time you start a new terminal
-conda install -c -y anaconda gxx_linux-64
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+mkdir -p $CONDA_PREFIX/etc/conda/deactivate.d
+printf '#!/bin/sh\n\nexport PYTHONNOUSERSITE=1' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+printf '#!/bin/sh\n\nunset PYTHONNOUSERSITE' > $CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh
+
+source activate SPURF
+conda install -y -c anaconda gxx_linux-64
 conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
 conda install -y -c biocore mafft
 conda install -y -c r r-rcpparmadillo
@@ -21,7 +27,7 @@ conda install -y pyyaml
 R CMD BATCH modules2install.R
 
 # Install ANARCI for making AHo annotations:
-echo 'Instaling ANARCI. Important: HMMER3 is required!!!'
+echo 'Installing ANARCI. Important: HMMER3 is required!!!'
 cd ANARCI_KD_copy
 python setup.py install --user
 cd ..
@@ -30,4 +36,3 @@ cd ..
 cd partis
 ./bin/build.sh
 cd ..
-
