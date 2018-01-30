@@ -15,8 +15,9 @@ if (length(args)==0) {
 
 input_seq <- args[1]
 outbase <- args[2]
+mode <- args[3]
 
-pred.prof <- predict.prof(input_seq)
+pred.prof <- predict.prof(input_seq, mode)
 
 mat <- matrix(nrow=21, ncol=149)
 for (i in 1:149) {for (j in 1:21) { mat[(i-1)*21+j] <- pred.prof[(i-1)*21+j] }}
@@ -108,8 +109,6 @@ suppressMessages(pdf(paste(outbase, '.pdf', sep=''),  width=75/119*ncol(mat), he
 suppressMessages(print(logo))
 invisible(dev.off())
 
-print('Wrote results to:')
-print(paste(outbase, '.tab', sep=''))
-print(paste(outbase, '.pdf', sep=''))
-
-
+cat('Wrote results to:')
+cat(paste(outbase, '.tab', sep=''))
+cat(paste(outbase, '.pdf', sep=''))

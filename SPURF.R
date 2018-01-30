@@ -1,5 +1,13 @@
 
-predict.prof = function(input_seq) {
+predict.prof = function(input_seq, mode) {
+  if (mode == "jaccard") {
+    return predict.jacc.prof(input_seq)
+  } else {
+    return predict.l2.prof(input_seq)
+  }
+}
+
+predict.l2.prof = function(input_seq) {
   ############ output annotation file path
   output_path = "tmp_annotations.csv"
   
@@ -56,3 +64,49 @@ predict.prof = function(input_seq) {
   
   return(pred.prof)
 }
+
+
+predict.jacc.prof = function(input_seq) {
+  ############ output annotation file path
+  output_path = "tmp_annotations.csv"
+  
+  ## run partis annotation on input sequence
+  partis_cmd <- paste('python annotate_sequence.py --sequence', as.character(input_seq),
+                      '--outfile', as.character(output_path), sep=" ")
+  system(partis_cmd)
+  
+  df <- read.csv(output_path, header = T)
+  input_prof <- df[1, 5:ncol(df)]
+  naiveAA <- df[2, 5:ncol(df)]
+  unlink(output_path)
+  
+  # compile model fitting code
+  Rcpp::sourceCpp("stepwise_fitting.cpp")
+  
+  # load model alphas
+  load("cached_data/final_jacc20_alphas.Rdata")
+  alpha = c(alphas[1,])
+  
+  # extract the model profiles
+  naiveAA.prof = matrix(unlist(naiveAA), nrow=1)
+  input.prof = matrix(unlist(input_prof), nrow=1)
+  
+  # compute the no-gap profile
+  nogap.prof = matrix(NA, nrow=1, ncol=ncol(naiveAA.prof))
+  
+  for (j in 1:149) {
+    if (all(naiveAA[1, (21*(j-1)+1):(21*j)] == c(rep(0,20), 1))) {
+      nogap.prof[1, (21*(j-1)+1):(21*j)] = 0
+    } else {
+      nogap.prof[1, (21*(j-1)+1):(21*j)] = 1
+    }
+  }
+  
+  # predict the substitution profile
+  pred.prof = predict_nogap_profs(alpha, rep(1:149, each=21), input.prof,
+                                  list(naiveAA.prof), nogap.prof, 149)
+  colnames(pred.prof) = colnames(input_prof)
+  
+  return(pred.prof)
+}
+
