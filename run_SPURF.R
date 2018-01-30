@@ -15,7 +15,7 @@ if (length(args)==0) {
 
 input_seq <- args[1]
 outbase <- args[2]
-mode <- args[3]
+mode <- if (is.na(args[3])) "l2" else "jaccard"
 
 pred.prof <- predict.prof(input_seq, mode)
 
@@ -109,6 +109,6 @@ suppressMessages(pdf(paste(outbase, '.pdf', sep=''),  width=75/119*ncol(mat), he
 suppressMessages(print(logo))
 invisible(dev.off())
 
-cat('Wrote results to:')
-cat(paste(outbase, '.tab', sep=''))
-cat(paste(outbase, '.pdf', sep=''))
+cat('Wrote results to:\n')
+cat(paste(outbase, '.tab\n', sep=''))
+cat(paste(outbase, '.pdf\n', sep=''))

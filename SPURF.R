@@ -1,9 +1,9 @@
 
 predict.prof = function(input_seq, mode) {
   if (mode == "jaccard") {
-    return predict.jacc.prof(input_seq)
+    return(predict.jacc.prof(input_seq))
   } else {
-    return predict.l2.prof(input_seq)
+    return(predict.l2.prof(input_seq))
   }
 }
 
