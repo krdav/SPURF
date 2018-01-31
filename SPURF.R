@@ -24,7 +24,7 @@ predict.l2.prof = function(input_seq) {
   unlink(output_path)
   
   # compile model fitting code
-  Rcpp::sourceCpp("stepwise_fitting.cpp")
+  Rcpp::sourceCpp("model_fitting.cpp")
   
   # load model alphas
   load("cached_data/final_l2_alphas.Rdata")
@@ -81,7 +81,7 @@ predict.jacc.prof = function(input_seq) {
   unlink(output_path)
   
   # compile model fitting code
-  Rcpp::sourceCpp("stepwise_fitting.cpp")
+  Rcpp::sourceCpp("model_fitting.cpp")
   
   # load model alphas
   load("cached_data/final_jacc20_alphas.Rdata")
