@@ -15,7 +15,11 @@ if (length(args)==0) {
 
 input_seq <- args[1]
 outbase <- args[2]
-mode <- if (is.na(args[3])) "l2" else "jaccard"
+if (is.na(args[3])) {
+  mode <- 'l2'
+} else {
+  mode <- args[3]
+}
 
 pred.prof <- predict.prof(input_seq, mode)
 
