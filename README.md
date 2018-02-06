@@ -55,6 +55,13 @@ sudo docker run -it spurf bash
 
 Detach using `ctrl-p ctrl-q`.
 
+We also have a docker image on Docker Hub that can be pulled and used directly:
+```
+sudo docker pull krdav/spurf
+sudo docker run -it -v /:/host krdav/spurf /bin/bash
+```
+
+
 
 ### Running SPURF
 
