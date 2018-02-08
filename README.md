@@ -14,20 +14,20 @@ cd SPURF
 git pull --recurse-submodules https://github.com/krdav/SPURF.git
 ```
 
+
 ### Installation
 
-There are two supported ways of installing the command line implementation of SPURF 1) using conda on Linux and 2) using Docker and the provided Dockerfile.
-The conda installation has been tested on our own servers and a fresh Ubuntu installation on a VirtualBox.
-Using VirtualBox SPURF can be installed on both MAC and Windows.
-Alternatively, Docker can also be used on multiple platforms.
+There are two supported ways of installing the command line implementation of SPURF: 1) using Conda on Linux and 2) using Docker and the provided Dockerfile.
+The Conda installation has been tested on our own servers and a fresh Ubuntu installation on a VirtualBox.
+Using VirtualBox, SPURF can be installed on both Mac and Windows.
+Alternatively, Docker can also be used on any platform that supports it.
 
 
-#### Using conda
+#### Using Conda
 
-Install conda for Python2 using the guide here: https://conda.io/docs/user-guide/install/linux.html
+First, [install Conda](https://conda.io/docs/user-guide/install/linux.html) for Python 2.
 Miniconda is sufficient and much faster at installing.
 Remember to `source ~/.bashrc` if continuing installing in the same terminal window.
-
 
 Install dependencies with `apt-get`:
 ```
@@ -37,7 +37,7 @@ sudo apt-get install -y libz-dev cmake scons libgsl0-dev libncurses5-dev libxml2
 ```
 
 Use the INSTALL executable to install the required python environment and partis (via `./INSTALL`).
-After installation, the conda environment needs to be loaded every time before use, like this:
+After installation, the Conda environment needs to be loaded every time before use, like this:
 ```
 source activate SPURF
 ```
@@ -45,33 +45,46 @@ source activate SPURF
 
 #### Using Docker
 
-Install Docker following the guide here: https://docs.docker.com/engine/installation/
+First [install Docker](https://docs.docker.com/engine/installation/).
 
-Inside the repository folder build the container and run it:
-```
-sudo docker build -t spurf .
-sudo docker run -it spurf bash
-```
-
-Detach using `ctrl-p ctrl-q`.
-
-We also have a docker image on Docker Hub that can be pulled and used directly:
+We have a Docker [image on Docker Hub](https://hub.docker.com/r/krdav/spurf/) that is automatically kept up to date with the master branch of this repository.
+It can be pulled and used directly:
 ```
 sudo docker pull krdav/spurf
-sudo docker run -it -v /:/host krdav/spurf /bin/bash
 ```
 
+Alternatively you can build the container yourself from inside the main repository directory:
+```
+sudo docker build -t spurf .
+```
+
+To run this container, use a command such as (see modifications below)
+
+```
+sudo docker run -it -v host-dir:/host krdav/spurf /bin/bash
+```
+
+* replace `host-dir` with the local directory to which you would like access inside your container 
+* replace `/host` with the place you would like this directory to be mounted
+* if you built your own container, use `spurf` in place of `krdav/spurf`
+
+Detach using `ctrl-p ctrl-q`.
 
 
 ### Running SPURF
 
-SPURF is wrapped into an Rscript name `run_SPURF.R` that takes three inputs 1) an antibody heavy chain DNA sequence, and optionally, 2) the basename for the two output files which are a PSSM and a logo plot, and 3) the model type (i.e. `l2` or `jaccard`).
-Example of a run:
+SPURF is wrapped into an Rscript named `run_SPURF.R` that takes three inputs: 
+
+1. an antibody heavy chain DNA sequence
+2. (optional) the basename for the two output files which are a PSSM and a logo plot
+3. the model type (i.e. `l2` or `jaccard`).
+
+Example run:
 ```
 Rscript --vanilla run_SPURF.R <input_sequence> <output_base> <model_type>
+```
 E.g.:
+```
 Rscript --vanilla run_SPURF.R CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGTGATTACTACTGGAGCTGGATCCATCAGCCCCCAGGGAAGGGGCTGGAGTGGATTGGGGAAATCAATCATAGTGGGAGCACCAACTACAACCCGTCCCTCGAAAGTCGAGCCACCATATCAGTAGACACGTCCCAGAACAACCTCTCCCTGAAGCTGAGCTCTGTGACCGCCGCGGACTCGGCTGTGTATTACTGTGCGAGAGGCCCGACTACAATGGCTCACGACTTTGACTACTGGGGCCAGGGAACCCTGGTCACC seqXYZ_SPURF_output l2
 ```
 By default, the model type `l2` is used.
-
-
