@@ -1,6 +1,6 @@
 ### Substitution Profiles Using Related Families (SPURF)
 
-This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred Position-Specific Scoring Matrix (PSSM) and a logo plot of this PSSM.
+This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred [position frequency matrix](https://en.wikipedia.org/wiki/Position_weight_matrix) and a logo plot of this.
 SPURF uses cached data from a large-scale Rep-Seq dataset as input to a statistical model made to determine a detailed clonal family specific substitution profile for a single input sequence.
 Source code to fit the SPURF model from scratch using another dataset is also provided.
 
