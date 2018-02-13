@@ -76,7 +76,7 @@ Detach using `ctrl-p ctrl-q`.
 SPURF is wrapped into an Rscript named `run_SPURF.R` that takes three inputs: 
 
 1. an antibody heavy chain DNA sequence
-2. (optional) the basename for the two output files which are a PSSM and a logo plot
+2. (optional) the basename for the two output files which are a position frequency matrix and a logo plot
 3. the model type (i.e. `l2` or `jaccard`).
 
 Example run:
