@@ -1,6 +1,6 @@
 ### Substitution Profiles Using Related Families (SPURF)
 
-This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred [position frequency matrix](https://en.wikipedia.org/wiki/Position_weight_matrix) and a logo plot of this.
+This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred substitution profile and a logo plot of this.
 SPURF uses cached data from a large-scale Rep-Seq dataset as input to a statistical model made to determine a detailed clonal family specific substitution profile for a single input sequence.
 Source code to fit the SPURF model from scratch using another dataset is also provided.
 
@@ -76,7 +76,7 @@ Detach using `ctrl-p ctrl-q`.
 SPURF is wrapped into an Rscript named `run_SPURF.R` that takes three inputs: 
 
 1. an antibody heavy chain DNA sequence
-2. (optional) the basename for the two output files which are a position frequency matrix and a logo plot
+2. (optional) the basename for the two output files which are a substitution profile and a logo plot
 3. the model type (i.e. `l2` or `jaccard`).
 
 Example run:
