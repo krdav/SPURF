@@ -90,4 +90,10 @@ Rscript --vanilla run_SPURF.R CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCT
 By default, the model type `l2` is used.
 
 
-![Output logo plot](/logo_output_example.png)
+### Output example
+
+![Output logo plot](/output_examples/logo_output_example.png)
+
+Zooming in on CDR2 and its flanking frameworks:
+![Output logo plot cut](/output_examples/logo_output_example_cut.png)
+
