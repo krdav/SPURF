@@ -1,3 +1,9 @@
+<p align="left">
+  <img src="https://img.shields.io/docker/automated/krdav/spurf.svg" />
+  <img src="https://img.shields.io/docker/build/krdav/spurf.svg" />
+</p>
+
+
 ### Substitution Profiles Using Related Families (SPURF)
 
 This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred substitution profile and a logo plot of this.
