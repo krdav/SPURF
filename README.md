@@ -9,6 +9,7 @@
 This code repository contains a command line implementation of SPURF, that takes a single antibody heavy chain DNA sequence and returns its inferred substitution profile and a logo plot of this.
 SPURF uses cached data from a large-scale Rep-Seq dataset as input to a statistical model made to determine a detailed clonal family specific substitution profile for a single input sequence.
 Source code to fit the SPURF model from scratch using another dataset is also provided.
+Results and methods are described in our [preprint](https://arxiv.org/abs/1802.06406).
 
 
 ### Cloning this repo
