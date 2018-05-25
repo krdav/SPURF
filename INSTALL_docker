@@ -4,16 +4,24 @@
 
 
 # Install conda environment:
-conda install -c anaconda gxx_linux-64
-conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
-conda install -y -c biocore mafft
-conda install -y -c r r-rcpparmadillo
+conda install -y biopython cmake gsl openblas pandas psutil pysam scons seaborn
 pip install colored-traceback dendropy==3.12.3
 
+
+# Install partis for inferring VDJ annotation and naive sequence:
+cd partis
+./bin/build.sh
+cd ..
+
+
+# Install more conda environment (post partis install b/c this interferes with gcc):
+conda install -y -c biocore mafft
 conda config --add channels r
 conda config --add channels bioconda
 conda update pysam
 conda install -y pyyaml
+conda install -y -c r r-base r-rcpparmadillo
+
 
 # R modules to install:
 R CMD BATCH modules2install.R
@@ -23,9 +31,4 @@ cd ANARCI_KD_copy
 python setup.py install --user
 cd ..
 
-
-# Install partis for inferring VDJ annotation and naive sequence:
-cd partis
-./bin/build.sh
-cd ..
 
