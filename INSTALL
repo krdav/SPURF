@@ -1,4 +1,5 @@
-# This can be used as an executable to install all dependencies.
+
+# This can be used as an executable to install all dependencies:
 # ./INSTALL
 
 # Initialize the conda environment.
@@ -10,24 +11,38 @@ printf '#!/bin/sh\n\nexport PYTHONNOUSERSITE=1' > $CONDA_PREFIX/etc/conda/activa
 printf '#!/bin/sh\n\nunset PYTHONNOUSERSITE' > $CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh
 source activate SPURF
 
-# Install partis for inferring VDJ annotation and naive sequence.
-conda install -y biopython cmake gsl openblas pandas psutil pysam r-essentials scons seaborn
-conda install -y -c biocore mafft
+
+# Install conda environment:
+conda install -y biopython cmake gsl openblas pandas psutil pysam scons seaborn
 pip install colored-traceback dendropy==3.12.3
+
+
+# Install partis for inferring VDJ annotation and naive sequence:
 cd partis
 ./bin/build.sh
 cd ..
 
-# Install ANARCI for making AHo annotations.
+
+# Install more conda environment (post partis install b/c this interferes with gcc):
+source activate SPURF
+conda install -y -c biocore mafft
+conda config --add channels r
+conda config --add channels bioconda
+conda update pysam
+conda install -y pyyaml
+conda install -y -c r r-base r-rcpparmadillo
+
+
+# R modules to install:
+R CMD BATCH modules2install.R
+
+# Install ANARCI for making AHo annotations:
 cd ANARCI_KD_copy
 python setup.py install
 cd ..
 
-# Install R packages.
-conda install -y gxx_linux-64
-conda install -y -c r r-rcpparmadillo
-R -e 'install.packages(c("ggseqlogo"), repos="http://cran.us.r-project.org")'
 
-# Install extra dependencies.
-conda update -y -c bioconda pysam
-conda install -y pyyaml
+# Running a test:
+Rscript --vanilla run_SPURF.R CGCAGGACTGTTGANGCCTTCGGAGACCCTGTCCCTCACCTGCGTTGTCTCTGGCGGGTCCTTCAGTGATTACTACTGGAGCTGGATCCATCAGCCCCCAGGGAAGGGGCTGGAGTGGATTGGGGAAATCAATCATAGTGGGAGCACCAACTACAACCCGTCCCTCGAAAGTCGAGCCACCATATCAGTAGACACGTCCCAGAACAACCTCTCCCTGAAGCTGAGCTCTGTGACCGCCGCGGACTCGGCTGTGTATTACTGTGCGAGAGGCCCGACTACAATGGCTCACGACTTTGACTACTGGGGCCAGGGAACCCTGGTCACC seqXYZ_SPURF_output l2
+
+
