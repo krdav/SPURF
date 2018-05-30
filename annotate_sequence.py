@@ -84,7 +84,7 @@ def run_partis(seq):
 
         gl_v_5p_del = full_gl_v[:ann['v_5p_del']]                      # 5-prime not included in input
         gl_j_3p_del = full_gl_j[(len(full_gl_j) - ann['j_3p_del']):]   # 3-prime not included in input
-        assert full_gl_v[ann['v_5p_del']:] == ann['v_gl_seq']
+        #assert full_gl_v[ann['v_5p_del']:] == ann['v_gl_seq']
         naiveDNA = gl_v_5p_del + ann['naive_seq'] + gl_j_3p_del  # Add the missing positions
         full_input_seq = 'N' * ann['v_5p_del'] + ann['input_seqs'][0] + 'N' * ann['j_3p_del']  # N pad the input sequence
         assert(len(naiveDNA) == len(full_input_seq))
