@@ -93,7 +93,7 @@ def run_partis(seq):
         if len(naiveDNA)%3 != 0:
             naiveDNA = naiveDNA[0:-(len(naiveDNA)%3)]
         if len(full_input_seq)%3 != 0:
-             full_input_seq = full_input_seq[0:-(len(seq)%3)]
+             full_input_seq = full_input_seq[0:-(len(full_input_seq)%3)]
         if len(naiveDNA) != len(full_input_seq):
             raise Exception('Sequences not equally long after trimming.\nInput: {}\nNaive: {}\n.'.format(full_input_seq, naiveDNA))
 
