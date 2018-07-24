@@ -10,6 +10,7 @@ This code repository contains a command line implementation of SPURF, that takes
 SPURF uses cached data from a large-scale Rep-Seq dataset as input to a statistical model made to determine a detailed clonal family specific substitution profile for a single input sequence.
 Source code to fit the SPURF model from scratch using another dataset is also provided.
 Results and methods are described in our [preprint](https://arxiv.org/abs/1802.06406).
+The dataset used in the paper is available in our [Zenodo bucket](https://doi.org/10.5281/zenodo.1289984).
 
 
 ### Cloning this repo
